@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TaskListItem: View {
-    @EnvironmentObject var items: TaskListManager
+    @EnvironmentObject var items: TaskListController
     var task: Task
     
     var deleteAlert: Alert {
@@ -64,6 +64,6 @@ struct TaskListItem: View {
 
 #Preview {
     ContentView()
-        .environmentObject(DateManager())
-        .environmentObject(TaskListManager())
+        .environmentObject(DateController())
+        .environmentObject(TaskListController())
 }

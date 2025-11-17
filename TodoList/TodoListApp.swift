@@ -10,14 +10,15 @@ import SwiftUI
 @main
 struct TodoListApp: App {
     
-    @StateObject var dateManager = DateManager()
-    @StateObject var taskListManager = TaskListManager()
+    @StateObject var dateController = DateController()
+    @StateObject var taskListController = TaskListController()
     
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(dateManager)
-                .environmentObject(taskListManager)
+                .environmentObject(dateController)
+                .environmentObject(taskListController)
+                .preferredColorScheme(.light)
         }
     }
 }

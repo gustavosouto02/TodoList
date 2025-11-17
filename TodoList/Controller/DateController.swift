@@ -1,5 +1,5 @@
 //
-//  DateManager.swift
+//  DateController.swift
 //  TodoListMVVM
 //
 //  Created by Gustavo Souto Pereira on 06/11/25.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class DateManager: ObservableObject {
+class DateController: ObservableObject {
     @Published var weeks: [WeekModel] = []
     @Published var selectedDate: Date {
         didSet {

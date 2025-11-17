@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DateView: View {
-    @EnvironmentObject var weekManager: DateManager
+    @EnvironmentObject var weekManager: DateController
     var week: WeekModel
     
     var body: some View {
@@ -55,5 +55,5 @@ struct DateView: View {
         Date().tomorrow.tomorrow,
         Date().tomorrow.tomorrow.tomorrow,
     ], referenceDate: Date()))
-    .environmentObject(DateManager())
+    .environmentObject(DateController())
 }

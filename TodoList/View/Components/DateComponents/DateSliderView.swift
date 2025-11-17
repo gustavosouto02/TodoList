@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DateSliderView<DateViewContent: View>: View {
     
-    @EnvironmentObject var weekManager: DateManager
+    @EnvironmentObject var weekManager: DateController
     @State private var activeTab: Int = 1
     @State private var position = CGSize.zero
     @GestureState private var dragOffset = CGSize.zero
@@ -55,5 +55,5 @@ struct DateSliderView<DateViewContent: View>: View {
 #Preview {
     DateSliderView() { week in
         DateView(week: week)
-    }.environmentObject(DateManager())
+    }.environmentObject(DateController())
 }

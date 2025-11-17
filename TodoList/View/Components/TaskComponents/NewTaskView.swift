@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NewTaskView: View {
     
-    @EnvironmentObject var items: TaskListManager
+    @EnvironmentObject var items: TaskListController
     @State private var taskTitle: String = ""
     @State private var taskdate: Date = .init()
     @Environment(\.dismiss) var dismiss

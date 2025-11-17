@@ -1,5 +1,5 @@
 //
-//  TaskListManager.swift
+//  TaskListController.swift
 //  TodoListMVVM
 //
 //  Created by Gustavo Souto Pereira on 06/11/25.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class TaskListManager: ObservableObject {
+class TaskListController: ObservableObject {
     @Published var items: [Task] = []
     
     init(){

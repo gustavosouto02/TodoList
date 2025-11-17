@@ -10,8 +10,8 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var createNewTask: Bool = false
-    @EnvironmentObject var weekManager: DateManager
-    @EnvironmentObject var taskListManager: TaskListManager
+    @EnvironmentObject var weekManager: DateController
+    @EnvironmentObject var taskListController: TaskListController
     
     var body: some View {
         ZStack{
@@ -19,7 +19,7 @@ struct ContentView: View {
                 DateHeaderView()
                 ScrollView(.vertical){
                     VStack{
-                        TaskListView(date: $weekManager.selectedDate, items: $taskListManager.items)
+                        TaskListView(date: $weekManager.selectedDate, items: $taskListController.items)
                     }
                 }
                 .scrollIndicators(.hidden)
@@ -47,6 +47,6 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
-        .environmentObject(DateManager())
-        .environmentObject(TaskListManager())
+        .environmentObject(DateController())
+        .environmentObject(TaskListController())
 }
