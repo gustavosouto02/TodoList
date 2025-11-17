@@ -2,7 +2,16 @@
 # macOS
 .DS_Store
 
-# Xcode user data
-*.xcuserstate
+# Xcode
+build/
+DerivedData/
 xcuserdata/
+*.xcuserstate
+*.xccheckout
+*.xcscmblueprint
+
+# SwiftPM
+.swiftpm/
+.build/
+
 
