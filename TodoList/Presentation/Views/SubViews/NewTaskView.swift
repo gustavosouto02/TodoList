@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NewTaskView: View {
     
-    @EnvironmentObject var items: TaskListManager
+    var saveTask: (Task) -> ()
     @State private var taskTitle: String = ""
     @State private var taskdate: Date = .init()
     @Environment(\.dismiss) var dismiss
@@ -45,7 +45,7 @@ struct NewTaskView: View {
             .padding(30)
             
             Button{
-                items.updateTaskList(task: Task(title: taskTitle, date: taskdate))
+                saveTask(Task(title: taskTitle, date: taskdate))
                 dismiss()
             }label: {
                 Text("Create Task")
@@ -61,5 +61,7 @@ struct NewTaskView: View {
 }
 
 #Preview {
-    NewTaskView()
+    NewTaskView() { task in 
+        
+    }
 }

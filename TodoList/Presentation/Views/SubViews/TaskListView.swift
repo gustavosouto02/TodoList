@@ -8,20 +8,22 @@
 import SwiftUI
 
 struct TaskListView: View {
-    @Binding var date: Date
-    @Binding var items: [Task]
+    @ObservedObject var viewModel: TasksHomePageViewModel
     var currentDateTasks: [Task] = []
 
-    init(date: Binding<Date>, items: Binding<[Task]>) {
-        self._date = date
-        self._items = items
-        currentDateTasks = getCurrentDateTasks()
+    init(viewModel: TasksHomePageViewModel) {
+        self.viewModel = viewModel
+        currentDateTasks = viewModel.getCurrentSelectedDateTasks()
     }
 
     var body: some View {
         VStack {
             ForEach(currentDateTasks) { task in
-                TaskListItem(task: task)
+                TaskListItem(task: task, onPress: { Task in
+                    toggleTaskCompletion(task: task)
+                }, onLongPress: { Task in
+                    deleteTask(task: task)
+                })
                     .background(alignment: .leading) {
                         if currentDateTasks.last?.id != task.id {
                             Rectangle()
@@ -34,16 +36,14 @@ struct TaskListView: View {
         .padding(.top, 15)
     }
 
-    func getCurrentDateTasks() -> [Task] {
-        return items.filter {
-            $0.date.toString(format: "EEEE, dd.MM.yyyy")
-                == date.toString(format: "EEEE, dd.MM.yyyy")
-        }.sorted { !$0.isCompleted && $1.isCompleted }
+    func toggleTaskCompletion(task: Task){
+        viewModel.toggleTaskCompletion(task: task)
+    }
+    func deleteTask(task: Task){
+        viewModel.deleteTask(task: task)
     }
 }
 
 #Preview {
-    ContentView()
-        .environmentObject(DateManager())
-        .environmentObject(TaskListManager())
+    TasksHomePage(viewModel: makeTasksHomePageViewModel())
 }
